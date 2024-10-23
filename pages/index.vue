@@ -1,7 +1,11 @@
 <template>
-  <div class="text-3xl text-center">Hello World! {{ foo }}</div>
+  <div>
+    <div class="h-screen flex justify-center items-center">
+      <BaseCard />
+    </div>
+  </div>
 </template>
 
 <script setup>
-const foo = ref("");
+import BaseCard from "@/components/BaseCard.vue";
 </script>

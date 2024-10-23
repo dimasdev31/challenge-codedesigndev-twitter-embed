@@ -4,11 +4,14 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
-  modules: ["@nuxt/eslint"],
+  modules: ["@nuxt/eslint", "@nuxt/image"],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
-  }
+  },
+  image: {
+    dir: "assets/img",
+  },
 });
