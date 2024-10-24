@@ -1,40 +1,68 @@
 <template>
-  <div class="bg-white rounded-[10px] shadow-sm w-[601px] h-[228px]">
-    <div class="flex flex-col space-y-[15px] py-[35px] px-[31px]">
-      <div class="flex flex-row justify-between items-center">
+  <div
+    class="card-shadow h-[228px] w-[601px] rounded-[10px] border border-[#1DA1F2] border-opacity-20 bg-white shadow-sm dark:border-[#000000] dark:bg-[#243447]"
+  >
+    <div
+      class="flex flex-col justify-between space-y-[15px] px-[31px] py-[35px]"
+    >
+      <div class="flex flex-row items-center justify-between">
         <div class="flex flex-col">
           <div class="inline-flex items-center space-x-[22px]">
             <!-- Avatar -->
-            <div class="flex items-center justify-center w-[50px] h-[50px]">
+            <div class="flex h-[50px] w-[50px] items-center justify-center">
               <NuxtImg src="me.jpg" class="rounded-full" alt="Gambar user" />
             </div>
             <!-- Name and username -->
             <div class="flex flex-col space-y-[1px]">
-              <h1 class="font-bold text-[18px]">Adimas Sastra Nugraha</h1>
-              <h2 class="text-[#000000] opacity-[60%] text-[16px]">
-                @dimassastra
+              <h1 class="text-[18px] font-bold dark:text-white">
+                {{ name }}
+              </h1>
+              <h2
+                class="text-[16px] text-[#000000] opacity-[60%] dark:text-white"
+              >
+                @{{ username }}
               </h2>
             </div>
           </div>
         </div>
         <img src="~/assets/img/twit-bird.png" alt="a bird" />
       </div>
-      <p class="leading-[26px] text-[16px]">
-        Why do they call it 'debugging' when it feels more like 'wildly guessing
-        and hoping for the best'?
-        <span class="text-[#1DA1F2]">#programming </span>
-        <span class="text-[#1DA1F2]">#coding </span>
-        <span class="text-[#1DA1F2]">#debugging</span>
+      <p class="text-[16px] leading-[26px] dark:text-white">
+        {{ tweet }}
+        <span v-for="(v, i) in tags" :key="i" class="text-[#1DA1F2]"
+          >#{{ v }}
+        </span>
       </p>
       <!-- Action button -->
       <div class="inline-flex items-center space-x-[20px]">
         <div class="inline-flex items-center space-x-[10px]">
-          <NuxtImg src="love.png" alt="love" class="w-[20.9px] h-[18.23px]" />
-          <span class="font-bold text-[#000000] opacity-[60%]">650</span>
+          <!-- <NuxtImg src="love.png" alt="love" class="w-[20.9px] h-[18.23px]" /> -->
+          <div class="!">
+            <svg
+              class="stroke-black dark:stroke-white"
+              width="24"
+              height="21"
+              viewBox="0 0 24 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20.84 2.61C20.3292 2.099 19.7228 1.69364 19.0554 1.41708C18.3879 1.14052 17.6725 0.998173 16.95 0.998173C16.2275 0.998173 15.5121 1.14052 14.8446 1.41708C14.1772 1.69364 13.5708 2.099 13.06 2.61L12 3.67L10.94 2.61C9.9083 1.57831 8.50903 0.998708 7.05 0.998708C5.59096 0.998708 4.19169 1.57831 3.16 2.61C2.1283 3.64169 1.54871 5.04097 1.54871 6.5C1.54871 7.95903 2.1283 9.35831 3.16 10.39L4.22 11.45L12 19.23L19.78 11.45L20.84 10.39C21.351 9.87924 21.7563 9.27281 22.0329 8.60535C22.3095 7.93789 22.4518 7.22249 22.4518 6.5C22.4518 5.77751 22.3095 5.0621 22.0329 4.39464C21.7563 3.72718 21.351 3.12075 20.84 2.61Z"
+                stroke-opacity="0.6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <span class="font-bold text-[#000000] opacity-[60%] dark:text-white">
+            {{ likes }}
+          </span>
         </div>
-        <span class="text-[#000000] opacity-[60%] font-bold"
-          >3:40 PM – Feb 24, 2022</span
-        >
+        <span class="font-bold text-[#000000] opacity-[60%] dark:text-white">{{
+          date
+        }}</span>
       </div>
     </div>
   </div>
@@ -44,4 +72,39 @@
 definePageMeta({
   name: "BaseCard",
 });
+
+// Todo: define props
+defineProps({
+  name: {
+    type: String,
+    default: "<NAME>",
+  },
+  username: {
+    type: String,
+    default: "<USERNAME>",
+  },
+  tweet: {
+    type: String,
+    default: "<TWEET>",
+  },
+  tags: {
+    type: Array,
+    default: () => [],
+  },
+  likes: {
+    type: Number,
+    default: 0,
+  },
+  date: {
+    type: String,
+    default: "<DATE>",
+  },
+});
 </script>
+
+<style>
+.card-shadow {
+  box-shadow: 0 15px 60px
+    light-dark(rgba(29, 161, 242, 15%), rgba(52, 81, 116, 15%));
+}
+</style>

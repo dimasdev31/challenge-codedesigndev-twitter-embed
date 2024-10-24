@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: light dark;
+}
+
 @layer base {
   @font-face {
     font-family: "Source Sans Pro", sans-serif;

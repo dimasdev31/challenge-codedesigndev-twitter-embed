@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="h-screen flex justify-center items-center">
+    <div class="flex h-screen items-center justify-center">
       <BaseCard />
     </div>
   </div>

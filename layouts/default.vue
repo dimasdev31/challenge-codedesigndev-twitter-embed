@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#ECF8FF] w-screen h-screen">
+  <div class="h-screen w-screen bg-[#ECF8FF] dark:bg-[#141D26]">
     <AppHeader />
     <slot />
     <AppFooter />
